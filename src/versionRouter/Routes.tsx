@@ -1,7 +1,7 @@
 import React from 'react';
 import * as E from 'fp-ts/lib/Either';
 import { withNarrowerAppState } from 'react-fp-ts-router';
-import { AppState, L, R } from './AppState';
+import { AppState, L, R } from './logic/AppState';
 
 const HasVersion = withNarrowerAppState(
   ({ appState }: { appState: AppState & R }) => (

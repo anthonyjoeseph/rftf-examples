@@ -1,66 +1,8 @@
-Next, you will add calls to the backend to the links in `<Landing>`.
-
-<details>
-<summary>App with rest added</summary>
-
-```tsx
-<Link to="/squirrel/">
-  <a
-    onClick={() => {
-      getSquirrelFromREST().then((squirrel) => {
-        setSquirrelStuff(squirrel);
-      }).catch((err) => {
-        setError(err);
-      })
-    }}
-  >
-      Summon Squirrel
-  </a>
-</Link>
-<Link to="/squirrel/nut">
-  <a
-    onClick={() => {
-      getNutErrorFromREST().then((squirrel) => {
-        setSquirrelStuff(squirrel);
-      }).catch((err) => {
-        setError(err);
-      })
-    }}
-  >
-      Request Dangerous Nut
-  </a>
-</Link>
-<Link to="/squirrel/tree/">
-  <a
-    onClick={() => {
-      getTreeErrorFromREST().then((squirrel) => {
-        setSquirrelStuff(squirrel);
-      }).catch((err) => {
-        setError(err);
-      })
-    }}
-  >
-    Request Dangerous Tree
-  </a>
-</Link>
-```
-</details>
-
-On your lunch break, you will realize that you were inconsistent with the trailing slashes on your the `path` props of your `<Route>` components. This will bother you, and you will blame yourself. When you get back, you will comb through your code and remove all of the trailing slashes.
-
-<details>
-<summary>Whoops you remove the trailing slashes</summary>
-
-
-</details>
-
-ideas:
-
 -confusion about trailing slash "/"
 -choosing best way to imperitavely change state?
   -wrap link in a button / re-routing w/ error, or action other than clicking, like textfield
   -frustration that most of the docs use `<Link/>`
-  -which way of getting route props? At length, explain the sundry ways and their best use cases. Hooks, withrouter hoc, render props, prop `render`. Can this be an entire blog entry on its own?
+  -which way of getting route props? At length, explain the sundry ways and their best use cases. Hooks, withrouter hoc, child props (implied but not actually a thing), prop `render`. Can this be an entire blog entry on its own?
   -should you pass route props thru everything? / start by keeping it as localized as possible - avoiding props drilling! and it eventually gets pulled up the component tree when it's mashed together with global app state
   -tyler mcginnis's "redirect" solution lol
 -can we see what a pain in the ass it is to have to null check values even when you know they're truthy at that route? / must have to invent a million error messages
@@ -93,3 +35,9 @@ reference to customers hating fast moving lights, they love rough surfaces, they
 -while this may seem like a contrived story, [this all actually happened](https://en.wikipedia.org/wiki/Secret_Squirrel).
 
 In all seriousness, know that this article is torn from the chest and written in blood.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+https://www.pluralsight.com/guides/react-router-typescript
+
+On your lunch break, you will realize that you were inconsistent with the trailing slashes on your the `path` props of your `<Route>` components. This will bother you, and you will blame yourself. When you get back, you will comb through your code and remove all of the trailing slashes.

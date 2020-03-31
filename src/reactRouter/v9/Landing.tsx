@@ -30,21 +30,48 @@ const Landing = () => {
             </div>
           </Route>
           <Route>
-            <Route
-              path="/:version"
+            <div
+              style={{
+                display: 'flex',
+                width: 200,
+                height: 300,
+                backgroundColor: 'yellow',
+              }}
             >
-              <FamilyList />
-            </Route>
-            <Route
-              path="/:version/:familyName"
+              <Route
+                path="/:version/loggedIn"
+              >
+                <FamilyList />
+              </Route>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                width: 200,
+                height: 300,
+                backgroundColor: 'green',
+              }}
             >
-              <SquirrelList />
-            </Route>
-            <Route
-              path="/:version/:familyName/:squirrelID"
+              <Route
+                path="/:version/loggedIn/:familyName"
+              >
+                <SquirrelList />
+              </Route>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                width: 200,
+                height: 300,
+                backgroundColor: 'orange',
+              }}
             >
-              <SquirrelDetail />
-            </Route>
+              <Route
+                path="/:version/loggedIn/:familyName/:squirrelID"
+              >
+                <SquirrelDetail />
+              </Route>
+            </div>
           </Route>
         </Switch>
       </div>

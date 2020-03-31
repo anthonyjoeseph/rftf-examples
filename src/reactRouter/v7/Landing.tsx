@@ -8,7 +8,7 @@ const Landing = () => {
       <div
         style={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: 'column',
         }}
       >
         <Switch>

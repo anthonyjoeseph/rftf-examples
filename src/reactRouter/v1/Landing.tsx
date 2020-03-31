@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import FamilyList from './components/FamilyList';
-import SquirrelList from './components/SquirrelList';
-import SquirrelDetail from './components/SquirrelDetail';
+import FamilyList from '../v1/components/FamilyList';
+import SquirrelList from '../v1/components/SquirrelList';
+import SquirrelDetail from '../v1/components/SquirrelDetail';
 
 const Landing = () => {
   return (

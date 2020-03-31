@@ -11,7 +11,7 @@ const Landing = () => {
       <div
         style={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: 'column',
         }}
       >
         <Switch>
@@ -31,17 +31,17 @@ const Landing = () => {
           </Route>
           <Route>
             <Route
-              path="/:version"
+              path="/:version/loggedIn"
             >
               <FamilyList />
             </Route>
             <Route
-              path="/:version/:familyName"
+              path="/:version/loggedIn/:familyName"
             >
               <SquirrelList />
             </Route>
             <Route
-              path="/:version/:familyName/:squirrelID"
+              path="/:version/loggedIn/:familyName/:squirrelID"
             >
               <SquirrelDetail />
             </Route>

@@ -38,7 +38,7 @@ const Landing = () => {
             }}
           >
             <Route
-              path="/:version"
+              path="/:version/loggedIn"
             >
               <FamilyList />
             </Route>
@@ -52,7 +52,7 @@ const Landing = () => {
             }}
           >
             <Route
-              path="/:version/:familyName"
+              path="/:version/loggedIn/:familyName"
             >
               <SquirrelList />
             </Route>
@@ -66,7 +66,7 @@ const Landing = () => {
             }}
           >
             <Route
-              path="/:version/:familyName/:squirrelID"
+              path="/:version/loggedIn/:familyName/:squirrelID"
             >
               <SquirrelDetail />
             </Route>
