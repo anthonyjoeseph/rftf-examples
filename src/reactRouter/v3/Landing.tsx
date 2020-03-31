@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import FamilyList from '../v1/components/FamilyList';
 import SquirrelList from '../v1/components/SquirrelList';
 import SquirrelDetail from '../v1/components/SquirrelDetail';
-import Login from './components/Login';
+import Login from '../v2/components/Login';
 
 const Landing = () => {
   return (
@@ -50,7 +50,7 @@ const Landing = () => {
           }}
         >
           <Route
-            path="/:version/squirells/:familyName"
+            path="/:version/squirrels/:familyName"
           >
             <SquirrelList />
           </Route>

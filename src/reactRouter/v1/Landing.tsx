@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import FamilyList from './FamilyList';
-import SquirrelList from './SquirrelList';
-import SquirrelDetail from './SquirrelDetail';
-import Login from './Login';
+import FamilyList from './components/FamilyList';
+import SquirrelList from './components/SquirrelList';
+import SquirrelDetail from './components/SquirrelDetail';
 
 const Landing = () => {
   return (
@@ -14,19 +13,6 @@ const Landing = () => {
           flexDirection: 'row',
         }}
       >
-        <Route
-          path="/:version/"
-        >
-          <div
-            style={{
-              width: 200,
-              height: 100,
-              backgroundColor: 'beige',
-            }}
-          >
-            <Login />
-          </div>
-        </Route>
         <div
           style={{
             display: 'flex',
@@ -36,7 +22,7 @@ const Landing = () => {
           }}
         >
           <Route
-            path="/:version/squirrels"
+            path="/:version"
           >
             <FamilyList />
           </Route>
@@ -50,7 +36,7 @@ const Landing = () => {
           }}
         >
           <Route
-            path="/:version/squirrels/:familyName"
+            path="/:version/:familyName"
           >
             <SquirrelList />
           </Route>
@@ -64,7 +50,7 @@ const Landing = () => {
           }}
         >
           <Route
-            path="/:version/squirrels/:familyName/:squirrelID"
+            path="/:version/:familyName/:squirrelID"
           >
             <SquirrelDetail />
           </Route>

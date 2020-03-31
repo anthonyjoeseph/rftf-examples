@@ -1,0 +1,95 @@
+Next, you will add calls to the backend to the links in `<Landing>`.
+
+<details>
+<summary>App with rest added</summary>
+
+```tsx
+<Link to="/squirrel/">
+  <a
+    onClick={() => {
+      getSquirrelFromREST().then((squirrel) => {
+        setSquirrelStuff(squirrel);
+      }).catch((err) => {
+        setError(err);
+      })
+    }}
+  >
+      Summon Squirrel
+  </a>
+</Link>
+<Link to="/squirrel/nut">
+  <a
+    onClick={() => {
+      getNutErrorFromREST().then((squirrel) => {
+        setSquirrelStuff(squirrel);
+      }).catch((err) => {
+        setError(err);
+      })
+    }}
+  >
+      Request Dangerous Nut
+  </a>
+</Link>
+<Link to="/squirrel/tree/">
+  <a
+    onClick={() => {
+      getTreeErrorFromREST().then((squirrel) => {
+        setSquirrelStuff(squirrel);
+      }).catch((err) => {
+        setError(err);
+      })
+    }}
+  >
+    Request Dangerous Tree
+  </a>
+</Link>
+```
+</details>
+
+On your lunch break, you will realize that you were inconsistent with the trailing slashes on your the `path` props of your `<Route>` components. This will bother you, and you will blame yourself. When you get back, you will comb through your code and remove all of the trailing slashes.
+
+<details>
+<summary>Whoops you remove the trailing slashes</summary>
+
+
+</details>
+
+ideas:
+
+-confusion about trailing slash "/"
+-choosing best way to imperitavely change state?
+  -wrap link in a button / re-routing w/ error, or action other than clicking, like textfield
+  -frustration that most of the docs use `<Link/>`
+  -which way of getting route props? At length, explain the sundry ways and their best use cases. Hooks, withrouter hoc, render props, prop `render`. Can this be an entire blog entry on its own?
+  -should you pass route props thru everything? / start by keeping it as localized as possible - avoiding props drilling! and it eventually gets pulled up the component tree when it's mashed together with global app state
+  -tyler mcginnis's "redirect" solution lol
+-can we see what a pain in the ass it is to have to null check values even when you know they're truthy at that route? / must have to invent a million error messages
+-VALET somehow have a restriction that requires global state for the app - maybe at first, trying to store squirrel state in the lowest level component we can, in order to encapsulate, then have some other component require the squirrel name to help find its car or something
+-DIFFERENT GENERATED VALET GREETINGS trouble with duplicate code initializing the state at a route and imperatively getting there / obviously using any api causes this problem - maybe you grumble at your boss for requiring this?
+-CLIPPY confusion with "exact" path and "switch", and how high up your component to put the `<Route>` tag (initially put it outside component then get frustrated passing the location prop around), misspelling paths the whole way through
+-ADD 5 SEC DELAY TO GETFAMILIES PART WAY THRU piece de resistance: a component calls its initializer high up the component tree and further left the route, which returns three seconds too late and accidentally clobbers a value loaded by a route further to the right. Can have fun trying to debug this for a long time.
+-can we try createBrowserHistory above the router level? And show how react-router clobbers it? And try listening to routes with history.listen? / when we need to start with initial state for a route before a component mounts
+
+
+squirrel login
+
+famous squirrel catalog
+
+squirrels have cars
+
+cars have squirrel valets that only know squirrels by name
+
+partway through, squirrels have a custom fav parking spot added that must go from the left input route back to the valet route - so the textfield input state must be stored globally. Now we have way more props drilling than we would have with global state. 
+
+some squirrel string has to go into the route so that a route can have a slash in it accidentally and fuck up path-to-regex
+
+squirrels belong to families
+
+reference to customers hating fast moving lights, they love rough surfaces, they get nervous, they have to keep eating to keep their teeth sharp, they "scurry," imply they are squirrels
+
+
+-frustration with the word "declarative" - the idea of components that only serve a logical function - Aside from being poorly named (does it turn something on or off? Does it reverse someting? The former, although it's not immediately obvious why, even if you already know what it does), `<Switch>` is the very definition of a side effect - it has no input or apparent output, and it does something which is hard to predict or understand. Isn't string parsing a problem that naturally lends itself to type safety? Or at least input and output? What does it have to do with component trees? Arbitrary render conditions, I guess? - https://tylermcginnis.com/react-router-programmatically-navigate/ (and maybe react-native-reanimated?)
+-have link at the beginning that takes users to the react-fp-ts-routing part of the post, don't reveal that it is 3-4 parts later
+-while this may seem like a contrived story, [this all actually happened](https://en.wikipedia.org/wiki/Secret_Squirrel).
+
+In all seriousness, know that this article is torn from the chest and written in blood.
