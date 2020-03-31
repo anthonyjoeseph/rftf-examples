@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import RouteToVersion from './versionRouter/RouteToVersion';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RouteToVersion />
   </React.StrictMode>,
   document.getElementById('root')
 );
