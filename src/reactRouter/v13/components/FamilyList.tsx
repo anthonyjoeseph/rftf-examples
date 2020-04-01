@@ -16,7 +16,12 @@ const FamilyList = ({
   >
     <div>Family list:</div>
     {squirrelFamilyNames.map((squirrelFamilyName) => (
-      <Link to={`${appVersion}/${squirrelFamilyName}`}>{squirrelFamilyName}</Link>
+      <Link
+        key={squirrelFamilyName}
+        to={`${appVersion}/loggedIn/${squirrelFamilyName}`}
+      >
+        {squirrelFamilyName}
+      </Link>
     ))}
   </div>
 );

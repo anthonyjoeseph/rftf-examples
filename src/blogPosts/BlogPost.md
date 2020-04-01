@@ -1,8 +1,10 @@
-tldr; here's the react-fp-ts-router [example project]("https://github.com/anthonyjoeseph/react-fp-ts-router/tree/master/example")
+tldr; this blog post explores the flaws an implementation that uses `react-router`. [Click here to the post where we use `react-fp-ts-router` instead]("https://github.com/anthonyjoeseph/react-fp-ts-router/tree/master/example")
 
 # Motivation: Type Safety
 
 You will make a simple squirrel app the traditional way, using react-router. Then you will make the same squirrel app using react-fp-ts-router. This article aims to explore the advantages of type-safety through the latter approach.
+
+This series is an illustration of how difficult life can be without types, even when you do everything right
 
 # Building an App Using react-router
 
@@ -207,7 +209,7 @@ Now both are rendered. This will seem to confirm your strange hypothesis. You wi
 
 [v8/loggedIn](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v8/loggedIn)
 
-This will render the routes properly, but they will render in a column instead of a row. The new `<div>` will have clobbered the parent `<div>`'s `flexDirection`. You will try the same thing, but with a `<React.Fragment>` this time.
+This will render the routes properly, but they will render in a column instead of a row. The new `<div>` will have clobbered the parent `<div>`'s `flexDirection`. You will replacing the new `<div>` with a `<React.Fragment>`.
 
 [version 9 code](https://github.com/anthonyjoeseph/rftf-examples/blob/master/src/reactRouter/v9/Landing.tsx)
 
@@ -219,11 +221,11 @@ But now you will find a strange bug at [v9/loggedIn/familyName/0](http://rftr-ex
 
 [version 10 code](https://github.com/anthonyjoeseph/rftf-examples/blob/master/src/reactRouter/v10/Landing.tsx)
 
-[v10/loggedIn](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v10/loggedIn/familyname/0)
+[v10/loggedIn/familyname/0](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v10/loggedIn/familyname/0)
 
 `<FamilylName>` will still not render. You will realize that `<Switch>` behaves differently with `<React.Fragment>` than with `<div>`. In fact, it will seem like now it has the reverse behavior - rendering _everything except_ the first component after the first matching `<Route>`.
 
-Actually, it renders that component, but it nullifies _that_ component's first child, and then renders its siblings.
+Actually, it does render that component, but it nullifies _that_ component's first child, and then renders its siblings.
 
 You will be amazed at this discovery. You will show your `<Landing>` component to your co-worker. They will point out the typo in one of your `<Route>` path props back in Version 8:
 
@@ -233,7 +235,7 @@ You will be amazed at this discovery. You will show your `<Landing>` component t
 
 [version 11 code](https://github.com/anthonyjoeseph/rftf-examples/blob/master/src/reactRouter/v11/Landing.tsx)
 
-[v11/loggedIn](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v11/loggedIn/familyname/0)
+[v11/loggedIn/familyname/0](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v11/loggedIn/familyname/0)
 
 Now the app will completely behave as expected. But what about other the other developers on your team? Besides the person you've just shown the app to, they would have no idea why there's a `<React.Fragment>` there. And if they took it out they'd have to untangle all of this all over again. Best to use an empty `<Route>` instead, so people will understand that it has something to do with routing.
 
@@ -260,14 +262,14 @@ Now the app will completely behave as expected. But what about other the other d
 </Switch>
 ```
 
-[version 11 code](https://github.com/anthonyjoeseph/rftf-examples/blob/master/src/reactRouter/v9/Landing.tsx)
+[version 12 code](https://github.com/anthonyjoeseph/rftf-examples/blob/master/src/reactRouter/v12/Landing.tsx)
 
-[v11/loggedIn](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v9/loggedIn/familyname/0)
+[v12/loggedIn/familyname/0](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v12/loggedIn/familyname/0)
 
-Finally, this will be the behavior you want. In fact, it will be perfect, because it won't clobber the other routes at [v11/loggedIn/familyName/0](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v9/loggedIn/familyname/0).
+Finally, this will be the behavior you want. In fact, it will be perfect, because it won't clobber the other routes at [v12/loggedIn/familyName/0](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v12/loggedIn/familyname/0).
 
-Actually, why doesn't it clobber those routes? It matches the empty `<Route>`, but shouldn't it nullify the `<Route>`s nested inside it? After all, the empty `<Route>` was the first `<Route>` it matched with.
+Actually, why doesn't it clobber those routes? It matches the empty `<Route>`, so shouldn't it nullify the `<Route>`s nested inside it? After all, the empty `<Route>` was the first `<Route>` it matched with.
 
 But, you suppose, if you think about it, that wouldn't make any sense. If that were it's behavior, you wouldn't be able to use `<Route>` deeper than one level nested beneath a `<Switch>`.
 
-By this point, you will have successfully routed your app. Next, you will have to wire mocked state through it.
+By this point, you will have successfully routed your app. Next, you implement linking.

@@ -6,7 +6,7 @@
   -should you pass route props thru everything? / start by keeping it as localized as possible - avoiding props drilling! and it eventually gets pulled up the component tree when it's mashed together with global app state
   -tyler mcginnis's "redirect" solution lol
 -can we see what a pain in the ass it is to have to null check values even when you know they're truthy at that route? / must have to invent a million error messages
--VALET somehow have a restriction that requires global state for the app - maybe at first, trying to store squirrel state in the lowest level component we can, in order to encapsulate, then have some other component require the squirrel name to help find its car or something
+-VALET NEEDS SQUIRREL NAME somehow have a restriction that requires global state for the app - maybe at first, trying to store squirrel state in the lowest level component we can, in order to encapsulate, then have some other component require the squirrel name to help find its car or something
 -DIFFERENT GENERATED VALET GREETINGS trouble with duplicate code initializing the state at a route and imperatively getting there / obviously using any api causes this problem - maybe you grumble at your boss for requiring this?
 -CLIPPY confusion with "exact" path and "switch", and how high up your component to put the `<Route>` tag (initially put it outside component then get frustrated passing the location prop around), misspelling paths the whole way through
 -ADD 5 SEC DELAY TO GETFAMILIES PART WAY THRU piece de resistance: a component calls its initializer high up the component tree and further left the route, which returns three seconds too late and accidentally clobbers a value loaded by a route further to the right. Can have fun trying to debug this for a long time.
@@ -27,17 +27,52 @@ some squirrel string has to go into the route so that a route can have a slash i
 
 squirrels belong to families
 
-reference to customers hating fast moving lights, they love rough surfaces, they get nervous, they have to keep eating to keep their teeth sharp, they "scurry," imply they are squirrels
+reference to customers hating fast moving lights,
+  they love rough surfaces, they get nervous, they
+  have to keep eating to keep their teeth sharp,
+  they "scurry," imply they are squirrels
 
 
--frustration with the word "declarative" - the idea of components that only serve a logical function - Aside from being poorly named (does it turn something on or off? Does it reverse someting? The former, although it's not immediately obvious why, even if you already know what it does), `<Switch>` is the very definition of a side effect - it has no input or apparent output, and it does something which is hard to predict or understand. Isn't string parsing a problem that naturally lends itself to type safety? Or at least input and output? What does it have to do with component trees? Arbitrary render conditions, I guess? - https://tylermcginnis.com/react-router-programmatically-navigate/ (and maybe react-native-reanimated?)
+-frustration with the word "declarative" - the idea of components
+  that only serve a logical function -
+  Aside from being poorly named (does it turn something on or off?
+  Does it reverse someting? The former, although it's
+  not immediately obvious why, even if you already know what it does),
+  `<Switch>` is the very definition of a side effect -
+  it has no input or apparent output, and it does something
+  which is hard to predict or understand.
+  Isn't string parsing a problem that naturally lends
+  itself to type safety? Or at least input and output?
+  What does it have to do with component trees?
+  Arbitrary render conditions, I guess? -
+  https://tylermcginnis.com/react-router-programmatically-navigate/
+  (and maybe react-native-reanimated?)
 -have link at the beginning that takes users to the react-fp-ts-routing part of the post, don't reveal that it is 3-4 parts later
 -while this may seem like a contrived story, [this all actually happened](https://en.wikipedia.org/wiki/Secret_Squirrel).
 
-In all seriousness, know that this article is torn from the chest and written in blood.
+at the end, commend them for sticking with the project.
+
+I commend you for finishing this project.
+  Most people would have accepted errors in their code,
+  or wouldn't have been able to follow the convoluted logic
+  of react-router. This series has emulated a many worst case
+  scenarios, all while assuming a best case programmer - you.
+  But - you shouldn't have to.
+
+This series is torn from the chest and written in blood.
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 
 https://www.pluralsight.com/guides/react-router-typescript
 
-On your lunch break, you will realize that you were inconsistent with the trailing slashes on your the `path` props of your `<Route>` components. This will bother you, and you will blame yourself. When you get back, you will comb through your code and remove all of the trailing slashes.
+  
+reading the react-router nested linking article: what's the
+  difference between url and path?
+this issue: https://github.com/reactjs/react-router-redux/issues/203
+leads to this issue: https://github.com/ReactTraining/react-router/issues/2814
+
+don't think of appState and updateState as prop drilling.
+  Think of it as marking those components as needing
+  global state, and/or having the power to change it.
+  There are four combinations, all of which are used
+  in this example. 

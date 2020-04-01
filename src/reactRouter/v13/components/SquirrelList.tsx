@@ -18,7 +18,12 @@ const SquirrelList = ({
   >
     <div>Squirrel list by id:</div>
     {squirrelIDs.map((squirrelID) => (
-      <Link to={`${appVersion}/${familyName}/${squirrelID}`}>{squirrelID}</Link>
+      <Link
+        key={squirrelID}
+        to={`${appVersion}/${familyName}/${squirrelID}`}
+      >
+        {squirrelID}
+      </Link>
     ))}
   </div>
 );

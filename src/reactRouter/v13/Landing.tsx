@@ -1,5 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, RouteComponentProps } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route,
+  Switch, RouteComponentProps,
+} from 'react-router-dom';
 import FamilyList from './components/FamilyList';
 import SquirrelList from './components/SquirrelList';
 import SquirrelDetail from './components/SquirrelDetail';
@@ -7,7 +10,7 @@ import { allFamilies } from './logic/SquirrelData';
 import Login from './components/Login';
 import BeautyContainer from '../v1/components/BeautyContainer';
 
-const appVersion = "v11";
+const appVersion = "v13";
 
 interface SquirrelRouteType {
   version?: string;
@@ -30,7 +33,9 @@ const Landing = () => {
             path="/:version/"
           >
             <BeautyContainer backgroundColor='beige'>
-              <Login />
+              <Login
+                appVersion={appVersion}
+              />
             </BeautyContainer>
           </Route>
           <Route>
@@ -52,18 +57,23 @@ const Landing = () => {
                     params: {
                       familyName,
                     },
+                    url,
+                    path
                   }
-                }: RouteComponentProps<SquirrelRouteType>) => (
-                  <SquirrelList
-                    appVersion={appVersion}
-                    familyName={familyName || ''}
-                    squirrelIDs={allFamilies.find(
-                      squirrelFamily => squirrelFamily.lastName === familyName
-                    )?.members.map(
-                      squirrel => squirrel.id
-                    ) || []}
-                  />
-                )}
+                }: RouteComponentProps<SquirrelRouteType>) => {
+                  console.log(`url: ${url} path: ${path} `);
+                  return (
+                    <SquirrelList
+                      appVersion={appVersion}
+                      familyName={familyName || ''}
+                      squirrelIDs={allFamilies.find(
+                        squirrelFamily => squirrelFamily.lastName === familyName
+                      )?.members.map(
+                        squirrel => squirrel.id
+                      ) || []}
+                    />
+                  );
+                }}
               />
             </BeautyContainer>
             <BeautyContainer backgroundColor='orange'>
