@@ -8,6 +8,9 @@ import V7 from '../../reactRouter/v7/Landing';
 import V8 from '../../reactRouter/v8/Landing';
 import V9 from '../../reactRouter/v9/Landing';
 import V10 from '../../reactRouter/v10/Landing';
+import V11 from '../../reactRouter/v11/Landing';
+import V12 from '../../reactRouter/v12/Landing';
+import V13 from '../../reactRouter/v13/Landing';
 export const literalToComponent: Record<string, React.ComponentType<{}>> = {
   v1: V1,
   v2: V2,
@@ -19,4 +22,7 @@ export const literalToComponent: Record<string, React.ComponentType<{}>> = {
   v8: V8,
   v9: V9,
   v10: V10,
+  v11: V11,
+  v12: V12,
+  v13: V13,
 };

@@ -1,9 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import FamilyList from '../v1/components/FamilyList';
-import SquirrelList from '../v1/components/SquirrelList';
-import SquirrelDetail from '../v1/components/SquirrelDetail';
 import Login from '../v2/components/Login';
+import BeautyContainer from '../v1/components/BeautyContainer';
 
 const Landing = () => {
   return (
@@ -19,33 +17,16 @@ const Landing = () => {
             exact
             path="/:version/"
           >
-            <div
-              style={{
-                width: 200,
-                height: 100,
-                backgroundColor: 'beige',
-              }}
-            >
+            <BeautyContainer backgroundColor='beige'>
               <Login />
-            </div>
+            </BeautyContainer>
           </Route>
-          <Route>
-            <Route
-              path="/:version/loggedIn"
-            >
-              <FamilyList />
-            </Route>
-            <Route
-              path="/:version/loggedIn/:familyName"
-            >
-              <SquirrelList />
-            </Route>
-            <Route
-              path="/:version/loggedIn/:familyName/:squirrelID"
-            >
-              <SquirrelDetail />
-            </Route>
-          </Route>
+          <div>
+            render 1
+          </div>
+          <div>
+            render 2
+          </div>
         </Switch>
       </div>
     </Router>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from '../v2/components/Login';
+import BeautyContainer from '../v1/components/BeautyContainer';
 
 const Landing = () => {
   return (
@@ -8,7 +9,7 @@ const Landing = () => {
       <div
         style={{
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
         }}
       >
         <Switch>
@@ -16,21 +17,17 @@ const Landing = () => {
             exact
             path="/:version/"
           >
-            <div
-              style={{
-                width: 200,
-                height: 100,
-                backgroundColor: 'beige',
-              }}
-            >
+            <BeautyContainer backgroundColor='beige'>
               <Login />
-            </div>
+            </BeautyContainer>
           </Route>
           <div>
-            render 1
-          </div>
-          <div>
-            render 2
+            <div>
+              render 1
+            </div>
+            <div>
+              render 2
+            </div>
           </div>
         </Switch>
       </div>

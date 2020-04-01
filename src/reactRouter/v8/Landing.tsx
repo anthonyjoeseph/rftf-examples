@@ -1,6 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import FamilyList from '../v1/components/FamilyList';
+import SquirrelList from '../v1/components/SquirrelList';
+import SquirrelDetail from '../v1/components/SquirrelDetail';
 import Login from '../v2/components/Login';
+import BeautyContainer from '../v1/components/BeautyContainer';
 
 const Landing = () => {
   return (
@@ -16,23 +20,26 @@ const Landing = () => {
             exact
             path="/:version/"
           >
-            <div
-              style={{
-                width: 200,
-                height: 100,
-                backgroundColor: 'beige',
-              }}
-            >
+            <BeautyContainer backgroundColor='beige'>
               <Login />
-            </div>
+            </BeautyContainer>
           </Route>
           <div>
-            <div>
-              render 1
-            </div>
-            <div>
-              render 2
-            </div>
+            <BeautyContainer backgroundColor='yellow'>
+              <Route path="/:version/loggeIn" >
+                <FamilyList />
+              </Route>
+            </BeautyContainer>
+            <BeautyContainer backgroundColor='green'>
+              <Route path="/:version/loggedIn/:familyName" >
+                <SquirrelList />
+              </Route>
+            </BeautyContainer>
+            <BeautyContainer backgroundColor='orange'>
+              <Route path="/:version/loggedIn/:familyName/:squirrelID" >
+                <SquirrelDetail />
+              </Route>
+            </BeautyContainer>
           </div>
         </Switch>
       </div>

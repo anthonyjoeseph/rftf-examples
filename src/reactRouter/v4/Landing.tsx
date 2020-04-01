@@ -4,6 +4,7 @@ import FamilyList from '../v1/components/FamilyList';
 import SquirrelList from '../v1/components/SquirrelList';
 import SquirrelDetail from '../v1/components/SquirrelDetail';
 import Login from '../v2/components/Login';
+import BeautyContainer from '../v1/components/BeautyContainer';
 
 const Landing = () => {
   return (
@@ -19,58 +20,25 @@ const Landing = () => {
             exact
             path="/:version/"
           >
-            <div
-              style={{
-                width: 200,
-                height: 100,
-                backgroundColor: 'beige',
-              }}
-            >
+            <BeautyContainer backgroundColor='beige'>
               <Login />
-            </div>
+            </BeautyContainer>
           </Route>
-          <div
-            style={{
-              display: 'flex',
-              width: 200,
-              height: 300,
-              backgroundColor: 'yellow',
-            }}
-          >
-            <Route
-              path="/:version/loggedIn"
-            >
+          <BeautyContainer backgroundColor='yellow'>
+            <Route path="/:version/loggedIn/" >
               <FamilyList />
             </Route>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              width: 200,
-              height: 300,
-              backgroundColor: 'green',
-            }}
-          >
-            <Route
-              path="/:version/loggedIn/:familyName"
-            >
+          </BeautyContainer>
+          <BeautyContainer backgroundColor='green'>
+            <Route path="/:version/loggedIn/:familyName/" >
               <SquirrelList />
             </Route>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              width: 200,
-              height: 300,
-              backgroundColor: 'orange',
-            }}
-          >
-            <Route
-              path="/:version/loggedIn/:familyName/:squirrelID"
-            >
+          </BeautyContainer>
+          <BeautyContainer backgroundColor='orange'>
+            <Route path="/:version/loggedIn/:familyName/:squirrelID/" >
               <SquirrelDetail />
             </Route>
-          </div>
+          </BeautyContainer>
         </Switch>
       </div>
     </Router>

@@ -18,27 +18,29 @@ const Landing = () => {
         <Switch>
           <Route
             exact
-            path="/:version"
+            path="/:version/"
           >
             <BeautyContainer backgroundColor='beige'>
               <Login />
             </BeautyContainer>
           </Route>
-          <BeautyContainer backgroundColor='yellow'>
-            <Route path="/:version/loggedIn" >
-              <FamilyList />
-            </Route>
-          </BeautyContainer>
-          <BeautyContainer backgroundColor='green'>
-            <Route path="/:version/loggedIn/:familyName" >
-              <SquirrelList />
-            </Route>
-          </BeautyContainer>
-          <BeautyContainer backgroundColor='orange'>
-            <Route path="/:version/loggedIn/:familyName/:squirrelID" >
-              <SquirrelDetail />
-            </Route>
-          </BeautyContainer>
+          <Route>
+            <BeautyContainer backgroundColor='yellow'>
+              <Route path="/:version/loggedIn" >
+                <FamilyList />
+              </Route>
+            </BeautyContainer>
+            <BeautyContainer backgroundColor='green'>
+              <Route path="/:version/loggedIn/:familyName" >
+                <SquirrelList />
+              </Route>
+            </BeautyContainer>
+            <BeautyContainer backgroundColor='orange'>
+              <Route path="/:version/loggedIn/:familyName/:squirrelID" >
+                <SquirrelDetail />
+              </Route>
+            </BeautyContainer>
+          </Route>
         </Switch>
       </div>
     </Router>

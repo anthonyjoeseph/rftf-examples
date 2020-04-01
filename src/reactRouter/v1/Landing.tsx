@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import FamilyList from '../v1/components/FamilyList';
-import SquirrelList from '../v1/components/SquirrelList';
-import SquirrelDetail from '../v1/components/SquirrelDetail';
+import FamilyList from './components/FamilyList';
+import SquirrelList from './components/SquirrelList';
+import SquirrelDetail from './components/SquirrelDetail';
+import BeautyContainer from './components/BeautyContainer';
 
 const Landing = () => {
   return (
@@ -13,48 +14,21 @@ const Landing = () => {
           flexDirection: 'row',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            width: 200,
-            height: 300,
-            backgroundColor: 'yellow',
-          }}
-        >
-          <Route
-            path="/:version"
-          >
+        <BeautyContainer backgroundColor='yellow'>
+          <Route path="/:version/" >
             <FamilyList />
           </Route>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            width: 200,
-            height: 300,
-            backgroundColor: 'green',
-          }}
-        >
-          <Route
-            path="/:version/:familyName"
-          >
+        </BeautyContainer>
+        <BeautyContainer backgroundColor='green'>
+          <Route path="/:version/:familyName/" >
             <SquirrelList />
           </Route>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            width: 200,
-            height: 300,
-            backgroundColor: 'orange',
-          }}
-        >
-          <Route
-            path="/:version/:familyName/:squirrelID"
-          >
+        </BeautyContainer>
+        <BeautyContainer backgroundColor='orange'>
+          <Route path="/:version/:familyName/:squirrelID/" >
             <SquirrelDetail />
           </Route>
-        </div>
+        </BeautyContainer>
       </div>
     </Router>
   );
