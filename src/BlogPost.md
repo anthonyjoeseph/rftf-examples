@@ -215,7 +215,7 @@ This will render the routes properly, but they will render in a column instead o
 
 This will correctly preserve the parent `<div>`'s style.
 
-But now you will find a strange bug at [v9/loggedIn/familyName/0](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v9/loggedIn/familyname/0). Now you will notice that `<FamilyList>` isn't rendering, but the other two squirrel components are. To test this, you will remove the other compoents besides `<FamilyList>`
+But now you will find a strange bug at [v9/loggedIn/familyName/0](http://rftr-example-site.s3-website-us-east-1.amazonaws.com/v9/loggedIn/familyname/0). Now you will notice that `<FamilyList>` isn't rendering, but the other two squirrel components are. To test this, you will remove the other components besides `<FamilyList>`
 
 [version 10 code](https://github.com/anthonyjoeseph/rftf-examples/blob/master/src/reactRouter/v10/Landing.tsx)
 

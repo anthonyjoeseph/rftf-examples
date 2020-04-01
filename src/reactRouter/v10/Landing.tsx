@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import FamilyList from '../v1/components/FamilyList';
-import SquirrelList from '../v1/components/SquirrelList';
-import SquirrelDetail from '../v1/components/SquirrelDetail';
 import Login from '../v2/components/Login';
 import BeautyContainer from '../v1/components/BeautyContainer';
 
