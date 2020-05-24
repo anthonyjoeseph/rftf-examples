@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FamilyList = ({
-  appVersion,
+  url,
   squirrelFamilyNames,
 }: {
-  appVersion: string;
+  url: string;
   squirrelFamilyNames: string[];
 }) => (
   <div
@@ -18,7 +18,7 @@ const FamilyList = ({
     {squirrelFamilyNames.map((squirrelFamilyName) => (
       <Link
         key={squirrelFamilyName}
-        to={`${appVersion}/${squirrelFamilyName}`}
+        to={`${url}/${squirrelFamilyName}`}
       >
         {squirrelFamilyName}
       </Link>

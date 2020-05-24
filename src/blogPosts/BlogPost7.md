@@ -14,7 +14,7 @@ Here's my reasoning. First of all, it's fun. Second, `react-fp-ts-router` enforc
 
 But why prosecute `react-router`? Wouldn't it be better to talk about `react-fp-ts-router`'s advantages?
 
-Especially since it's so small (2 HOCs and an handful of types), it's hard to easily understand the scope of `react-fp-ts-router`, or functional paradigms in general, for that matter. It's easier to see the size of the risk imperative paradigms impose. Happily for our cause, `react-router` happens to be an easy target. It has widespread use (three million weekly downloads at the time of publication) and, though it's clearly useful, and in some ways iss really quite clever, it has many flaws.
+Especially since it's so small (2 HOCs and an handful of types), it's hard to easily understand the scope of `react-fp-ts-router`, or functional paradigms in general, for that matter. It's easier to see the size of the risk imperative paradigms impose. Happily for our cause, `react-router` happens to be an easy target. It has widespread use and, though it's clearly useful, and in some ways is really quite clever, it has many flaws.
 
 ## The biggie
 
@@ -66,9 +66,7 @@ Not only does `react-fp-ts-router` avoid these problems, it actively proposes so
 
 Maybe part 1 seems like a cheap shot. A hit post against `<Switch>`. Pages and pages dedicated to a seemingly small bug, a minor slip up from the [ReactTraining](https://reacttraining.com/) team. While yes, at time of publication, `<Switch>` is broken, and yes, it is poorly named (does it swap two things? Does it turn something on?), there is something deeper and more insidious than poor implementation going on here. `<Switch>` has (is?) a poor interface.
 
-react-router is 'declarative' in the sense that it puts logic into jsx. In this way, it poses as a functional library. However, lambda calculus requires input and output. Since it has neither, `<Switch>` is best described as a side effect. It is impossible to predict at compile time what affect it will have. Since it has no compile-time output, we don't know what it's expected behavior is until runtime. Since it has no types, it lacks self-documentation. Since it's written documentation is vague, it's unclear what its expected behavior is even _at_ runtime. It has likely remained broken in production because the developers are unaware that it is. Possibly, they have forgotten what it's supposed to do. That sounds more insulting than it is - it is very difficult to describe exactly what a properly functioning `<Switch>` _should_ do. Unfortunately, `react-router` offers no better way to selectively route. We must use `<Switch>`.
-
-`<Switch>` could do anything at any moment. It is untamed, feral. Unbroken, yet broken. Unusable, yet required. It represents the confluence of nearly every possible problem with non-functional design.
+react-router is 'declarative' in the sense that it puts logic into jsx. In this way, it poses as a functional library. However, lambda calculus requires input and output. Since it has neither, `<Switch>` is best described as a side effect. It is impossible to predict at compile time what affect it will have. Since it has no compile-time output, we don't know what it's expected behavior is until runtime. Since it has no types, it lacks self-documentation. Since it's written documentation is vague, it's unclear what its expected behavior is even _at_ runtime. It has likely remained broken in production because the developers are unaware that it is. Possibly, they have forgotten what it's supposed to do. That sounds more insulting than it is - it is very difficult to describe exactly what a properly functioning `<Switch>` _should_ do (though we will try in a moment). `<Switch>` could do anything at any moment. It is untamed, feral. Unbroken, yet broken. It represents the confluence of nearly every possible problem with non-functional design.
 
 `react-fp-ts-router` really has no obvious equivalent of `<Switch>`. If `<Switch>` is best defined as a runtime reducer of an array of child components governed by potential regex matches of _those_ components's arbitrarily defined routing data, it's strange to think what that would look like. I suppose it would be a parent component that wraps each of its chilren in `withNarrowerAppState`, each with a conditional that depends on a graph traversal of _its_ children that finds all components that accept a 'path' prop, and this conditional is constructed in a way that only the first component listed that satisfies its own condition or that contains a descendant that satisfies _its_ own condition can render.
 
@@ -85,6 +83,10 @@ Charitably, `react-router` solves the problem of null-checking components agains
 After all, lots of things can go wrong in the conversion from a route's string to it's tree. And that problem is solved by string parsing. Which, even this early in the computing game, we have good solutions for. And it's a problem that naturally lends itself to type safety and rigor, input and output.
 
 ## Stray Thoughts
+
+### Scope of use
+
+Exactly how widespread is react-router? According to npm it has three million weekly downloads. `react` has eight million. That means that, at the time of publication, roughly 37 percent of `react` users choose `react-router`.
 
 ### Response to Anticipated Criticism
 

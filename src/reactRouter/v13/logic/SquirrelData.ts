@@ -1,3 +1,8 @@
+export interface SquirrelRouteType {
+  familyName?: string;
+  squirrelID?: string;
+}
+
 export interface SquirrelInfo {
   id: number;
   firstName: string;
@@ -29,17 +34,17 @@ export const allFamilies: SquirrelFamily[] = [
     lastName: 'Chipmunk',
     members: [
       {
-        id: 0,
+        id: 2,
         firstName: 'Mama',
         favoriteColor: 'purple',
       },
       {
-        id: 1,
+        id: 3,
         firstName: 'Papa',
         favoriteColor: 'cyan',
       },
       {
-        id: 2,
+        id: 4,
         firstName: 'Baby',
         favoriteColor: 'beige',
       }
@@ -49,7 +54,7 @@ export const allFamilies: SquirrelFamily[] = [
     lastName: 'McSquirrel',
     members: [
       {
-        id: 0,
+        id: 5,
         firstName: 'Davis',
         favoriteColor: 'red',
       },
@@ -59,17 +64,17 @@ export const allFamilies: SquirrelFamily[] = [
     lastName: 'Kennedy',
     members: [
       {
-        id: 0,
+        id: 6,
         firstName: 'Jackie',
         favoriteColor: 'grey',
       },
       {
-        id: 1,
+        id: 7,
         firstName: 'John',
         favoriteColor: 'blue',
       },
       {
-        id: 2,
+        id: 8,
         firstName: 'Robert',
         favoriteColor: 'periwinkle',
       }

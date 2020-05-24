@@ -3,14 +3,13 @@ import {
   BrowserRouter as Router, Route,
   Switch, RouteComponentProps,
 } from 'react-router-dom';
-import FamilyList from './components/FamilyList';
-import SquirrelList from './components/SquirrelList';
-import SquirrelDetail from './components/SquirrelDetail';
-import { allFamilies, SquirrelRouteType } from './logic/SquirrelData';
-import Login from './components/Login';
+import FamilyList from '../v14/components/FamilyList';
+import SquirrelList from '../v14/components/SquirrelList';
+import SquirrelDetail from '../v13/components/SquirrelDetail';
+import { allFamilies, SquirrelRouteType } from '../v13/logic/SquirrelData';
+import Login from '../v14/components/Login';
 import BeautyContainer from '../v1/components/BeautyContainer';
-
-const appVersion = "v13";
+import FamilyError from './components/FamilyError';
 
 const Landing = () => {
   return (
@@ -25,47 +24,56 @@ const Landing = () => {
           <Route
             exact
             path="/:version/"
-          >
-            <BeautyContainer backgroundColor='beige'>
-              <Login
-                appVersion={appVersion}
-              />
-            </BeautyContainer>
-          </Route>
+            render={({
+              match: { url },
+            }) => (
+              <BeautyContainer backgroundColor='beige'>
+                <Login url={url} />
+              </BeautyContainer>
+            )}
+          />
           <Route>
             <BeautyContainer backgroundColor='yellow'>
               <Route
                 path="/:version/loggedIn"
-              >
-                <FamilyList
-                  appVersion={appVersion}
-                  squirrelFamilyNames={allFamilies.map(
-                    squirrelFamily => squirrelFamily.lastName,
-                  )}
-                />
-              </Route>
-            </BeautyContainer>
-            <BeautyContainer backgroundColor='green'>
-              <Route
-                path="/:version/loggedIn/:familyName"
-                render={({
-                  match: {
-                    params: {
-                      familyName,
-                    },
-                  }
-                }: RouteComponentProps<SquirrelRouteType>) => (
-                  <SquirrelList
-                    appVersion={appVersion}
-                    familyName={familyName || ''}
-                    squirrelIDs={allFamilies.find(
-                      squirrelFamily => squirrelFamily.lastName === familyName
-                    )?.members.map(
-                      squirrel => squirrel.id
-                    ) || []}
+                render={({ 
+                  match: { url }
+                }) => (
+                  <FamilyList
+                    url={url}
+                    squirrelFamilyNames={allFamilies.map(
+                      squirrelFamily => squirrelFamily.lastName,
+                    )}
                   />
                 )}
               />
+            </BeautyContainer>
+            <BeautyContainer backgroundColor='green'>
+            <Route
+              exact
+              path="/:version/loggedIn/error"
+              component={FamilyError}
+            />
+            <Route
+              path="/:version/loggedIn/:familyName"
+              render={({
+                match: {
+                  params: {
+                    familyName,
+                  },
+                  url,
+                }
+              }: RouteComponentProps<SquirrelRouteType>) => (
+                <SquirrelList
+                  url={url}
+                  squirrelIDs={allFamilies.find(
+                    squirrelFamily => squirrelFamily.lastName === familyName
+                  )?.members.map(
+                    squirrel => squirrel.id
+                  ) || []}
+                />
+              )}
+            />
             </BeautyContainer>
             <BeautyContainer backgroundColor='orange'>
               <Route

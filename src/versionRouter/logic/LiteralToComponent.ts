@@ -11,6 +11,9 @@ import V10 from '../../reactRouter/v10/Landing';
 import V11 from '../../reactRouter/v11/Landing';
 import V12 from '../../reactRouter/v12/Landing';
 import V13 from '../../reactRouter/v13/Landing';
+import V14 from '../../reactRouter/v14/Landing';
+import V15 from '../../reactRouter/v15/Landing';
+import V16 from '../../reactRouter/v16/Landing';
 export const literalToComponent: Record<string, React.ComponentType<{}>> = {
   v1: V1,
   v2: V2,
@@ -25,4 +28,7 @@ export const literalToComponent: Record<string, React.ComponentType<{}>> = {
   v11: V11,
   v12: V12,
   v13: V13,
+  v14: V14,
+  v15: V15,
+  v16: V16,
 };

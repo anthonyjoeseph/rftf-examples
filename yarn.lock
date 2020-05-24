@@ -6775,6 +6775,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.5"
 
+monocle-ts@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/monocle-ts/-/monocle-ts-2.1.0.tgz#5c1bbade7952b57e33f2179866467e87d9ed5977"
+  integrity sha512-YWH8TDcZSEeCaxp0ZjgccLChnaDvTiUHILpuI0DSZeASYSCgwdz+h6+uEG4QCwYreGsn1oI18ysrcUPv6xWK7w==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8545,10 +8550,10 @@ react-error-overlay@^6.0.7:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
   integrity sha512-TAv1KJFh3RhqxNvhzxj6LeT5NWklP6rDr2a0jaTfsZ5wSZWHOGeqQyejUp3xxLfPt2UpyJEcVQB/zyPcmonNFA==
 
-react-fp-ts-router@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/react-fp-ts-router/-/react-fp-ts-router-0.0.3.tgz#d6f7acfc65f80f60018da2f8562166e323ae795e"
-  integrity sha512-z73P1ZoVt/TkY7Wa+WmezL2fbMTr0bJi6IeQMIVtK/Zjjwb7tnSQ0qYjeDspAYJX5WubcPBkgpuhdK7ppVjDKQ==
+react-fp-ts-router@^0.0.27:
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/react-fp-ts-router/-/react-fp-ts-router-0.0.27.tgz#944f21cb3d04d86166011daa065e0d6062b732d3"
+  integrity sha512-lk0WJAEb/vK6SISlLBpgOoAalP11Z8/DCl39pX9rY1kEDvfTPSA5zK2F1wM7ZpzE2ToJMhLtJ+BP5pqV9SEKIw==
   dependencies:
     "@types/history" "^4.7.5"
     "@types/react" "^16.9.27"
@@ -8556,6 +8561,7 @@ react-fp-ts-router@^0.0.3:
     fp-ts-routing "^0.5.3"
     history "^4.10.1"
     io-ts "^2.1.2"
+    monocle-ts "^2.1.0"
     react "^16.13.1"
 
 react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
@@ -8651,6 +8657,16 @@ react-scripts@3.4.1:
     workbox-webpack-plugin "4.3.1"
   optionalDependencies:
     fsevents "2.1.2"
+
+react-state-io@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-state-io/-/react-state-io-0.0.1.tgz#97f58eb19e0f05c029d1d7b105983480db2db2eb"
+  integrity sha512-md7XHdkTTfjkUtLMkQZPjc1SbHN+VwU76p/6/sanSgMnfqllRiJk+wc6+b9w1Pa24TOt1W0e9P4q5iHgDN5wCg==
+  dependencies:
+    "@types/react" "^16.9.27"
+    fp-ts "^2.5.3"
+    io-ts "^2.1.2"
+    react "^16.13.1"
 
 react@^16.13.1:
   version "16.13.1"
@@ -9057,6 +9073,18 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+router-state-io@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/router-state-io/-/router-state-io-0.0.0.tgz#637579a1eac61a9911fa34e05b65953dced4fc93"
+  integrity sha512-q526c95pDL5xrSLO5agT1dnKfUkjMXRO2eBpztmECE6NJSzyVQzq7DU4SsE9yD5rU4pbwKm6rSek8OY8kWHB0A==
+  dependencies:
+    "@types/history" "^4.7.5"
+    fp-ts "^2.5.3"
+    fp-ts-routing "^0.5.3"
+    history "^4.10.1"
+    monocle-ts "^2.1.0"
+    react-state-io "^0.0.1"
 
 rsvp@^4.8.4:
   version "4.8.5"
